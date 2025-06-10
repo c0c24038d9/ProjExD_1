@@ -22,14 +22,17 @@ def main():
             if event.type == pg.QUIT: return
         key_lst = pg.key.get_pressed() #キーの押下状態を取得
         # print(key_lst)
-        if key_lst[pg.K_UP]:
-            kk_rct.move_ip(0,-1) #↑キーが押されたら上に移動
-        if key_lst[pg.K_DOWN]:
-            kk_rct.move_ip(0,1)
-        if key_lst[pg.K_LEFT]:
+
+        if key_lst:
             kk_rct.move_ip(-1,0)
+        if key_lst[pg.K_UP]:
+            kk_rct.move_ip(-1,-1) #↑キーが押されたら上に移動
+        if key_lst[pg.K_DOWN]:
+            kk_rct.move_ip(-1,1)
+        if key_lst[pg.K_LEFT]:
+            kk_rct.move_ip(-2,0)
         if key_lst[pg.K_RIGHT]:
-            kk_rct.move_ip(1,0)
+            kk_rct.move_ip(2,0)
 
         tmr = tmr%3200
         screen.blit(bg_img, [-tmr, 0])
